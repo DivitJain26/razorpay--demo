@@ -37,7 +37,7 @@ const Checkout = () => {
 
         try {
 
-            const { data: order } = await axios.post("http://localhost:3000/api/payment/create-order", {
+            const { data: order } = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/payment/create-order`, {
                 amount: amount * 100, // paise
             });
 
@@ -58,7 +58,7 @@ const Checkout = () => {
                     // const verifyData = await verifyRes.json();
                     // alert(verifyData.message);
                     try {
-                        const { data: verifyData } = await axios.post("http://localhost:3000/api/payment/verify", response);
+                        const { data: verifyData } = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/payment/verify`, response);
                         alert(verifyData.message);
                     } catch (err) {
                         alert(err.message);
